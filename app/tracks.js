@@ -16,6 +16,15 @@ const createRouter = () => {
         };
     });
 
+    router.get("/:id", async (req, res) => {
+        try {
+            const tracks = await Track.findById(req.params.id);
+            res.send(tracks);
+        } catch (e) {
+            res.status(500).send(e);
+        };
+    });
+
     router.post("/", async (req, res) => {
         const album = Album.findById(req.body.album);
         if(!album){
