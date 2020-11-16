@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const artists = require("./app/artists");
 const album = require("./app/albums");
 const track = require("./app/tracks");
+const users = require("./app/users");
+const trackHistory = require("./app/trackHistory");
 const app = express();
 const port = 8000;
 
@@ -17,6 +19,8 @@ const run = async () => {
     app.use("/artists", artists());
     app.use("/albums", album());
     app.use("/tracks", track());
+    app.use("/users", users);
+    app.use("/trackHistory", trackHistory);
     console.log("Connected to mongo DB");
 
     app.listen(port, () => {
