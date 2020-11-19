@@ -36,7 +36,7 @@ db.once("open", async () => {
         name: "It's Better If You Don't Understand",
         yearOfIssue: 2010,
         artist: brunoM._id,
-        image: "its-better-if-you-don't-know.jpg"
+        image: "its-better-if-you-dont-know.jpg"
     }, {
         name: "Thriller",
         yearOfIssue: 1982,
