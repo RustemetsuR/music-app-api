@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/User");
-const Track = require("../models/Tracks");
+const Track = require("../models/Track");
 const TrackHistory = require("../models/TrackHistory");
 
 router.get("/", async (req, res) => {

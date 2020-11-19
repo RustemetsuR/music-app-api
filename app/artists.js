@@ -2,7 +2,7 @@ const router = require("express").Router();
 const multer = require("multer");
 const path = require("path");
 const config = require("../config");
-const Artist = require("../models/Artists");
+const Artist = require("../models/Artist");
 const { nanoid } = require("nanoid");
 
 const storage = multer.diskStorage({

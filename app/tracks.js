@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const Album = require("../models/Albums");
-const Track = require("../models/Tracks");
+const Album = require("../models/Album");
+const Track = require("../models/Track");
 
 const createRouter = () => {
     router.get("/", async (req, res) => {
