@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
         return res.status(401).send({ error: "Wrong token" });
     };
     try {
-        const trackHistory = await TrackHistory.find({user: user});
+        const trackHistory = await TrackHistory.find({user: user}).sort({dateTime: -1});
         res.send(trackHistory);
     }catch(e){
         res.status(400).send(e);
