@@ -13,9 +13,19 @@ router.get("/", async (req, res) => {
         return res.status(401).send({ error: "Wrong token" });
     };
     try {
-        const trackHistory = await TrackHistory.find({user: user}).sort({dateTime: -1});
+        const trackHistory = await TrackHistory.find({ user: user })
+            .populate({
+                path: 'track',
+                populate: {
+                    path: 'album',
+                    populate: {
+                        path: 'artist',
+                    }
+                },
+            })
+            .populate({path: "user"}).sort({dateTime: -1});
         res.send(trackHistory);
-    }catch(e){
+    } catch (e) {
         res.status(400).send(e);
     };
 });
