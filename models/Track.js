@@ -21,6 +21,11 @@ const TrackSchema = new Schema({
         required: true,
         unique: true,
     },
+    published: {
+        type: Boolean,
+        required: true,
+        default: false,
+    }
 });
 
 TrackSchema.pre('save', function (next) {
