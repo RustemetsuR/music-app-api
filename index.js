@@ -6,6 +6,7 @@ const album = require("./app/albums");
 const track = require("./app/tracks");
 const users = require("./app/users");
 const trackHistory = require("./app/trackHistory");
+const unpublishedItems = require("./app/unpublishedItems");
 const app = express();
 const port = 8000;
 const config = require("./config");
@@ -22,6 +23,7 @@ const run = async () => {
     app.use("/tracks", track());
     app.use("/users", users);
     app.use("/trackHistory", trackHistory);
+    app.use("/unpublishedItems", unpublishedItems);
     console.log("Connected to mongo DB");
 
     app.listen(port, () => {
