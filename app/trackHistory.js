@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const Track = require("../models/Track");
 const TrackHistory = require("../models/TrackHistory");
+const auth = require("../middleware/auth");
 
 router.get("/", async (req, res) => {
     const token = req.get("Authorization");
@@ -30,15 +31,7 @@ router.get("/", async (req, res) => {
     };
 });
 
-router.post("/", async (req, res) => {
-    const token = req.get("Authorization");
-    if (!token) {
-        return res.status(401).send({ error: "No token presented" });
-    };
-    const user = await User.findOne({ token });
-    if (!user) {
-        return res.status(401).send({ error: "Wrong token" });
-    };
+router.post("/", auth, async (req, res) => {
     const trackID = req.body.track;
     const track = await Track.findById(trackID);
     if (!track) {
