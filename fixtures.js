@@ -97,18 +97,23 @@ db.once("open", async () => {
         number: 102,
     });
 
+  
     const [user, admin] = await User.create(
         {
-            username: 'public-user',
+            username: 'public-user@user.com',
             password: 'user123',
             token: nanoid(),
             role: 'user',
+            displayName: 'Valera',
+            avatarImage: "https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png"
         },
         {
-            username: 'admin',
+            username: 'admin@admin.com',
             password: 'admin123',
             token: nanoid(),
             role: 'admin',
+            displayName: 'Dmitrii',
+            avatarImage: "https://i.pinimg.com/736x/34/60/3c/34603ce8a80b1ce9a768cad7ebf63c56.jpg"
         }
     );
 
