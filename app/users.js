@@ -2,7 +2,7 @@ const router = require("express").Router();
 const config = require("../config");
 const User = require("../models/User");
 const axios = require('axios');
-const nanoid = require('nanoid');
+const {nanoid} = require('nanoid');
 
 router.get("/", async (req, res) => {
   try {
@@ -73,18 +73,23 @@ router.post("/facebookLogin", async (req, res) => {
 
     let user = await User.findOne({facebookId: req.body.id});
 
+    console.log(req.body);
+
     if (!user) {
       user = new User({
         username: req.body.email,
         password: nanoid(),
         facebookId: req.body.id,
-        displayName: req.body.name
+        displayName: req.body.name,
+        avatarImage: req.body.picture.data.url,
       });
     }
     user.generateToken();
     await user.save({validateBeforeSave: false});
+    console.log(user);
     res.send(user);
   } catch(e) {
+    console.log(e);
     return res.status(401).send({message: "Facebook token incorrect"});
   }
 });
