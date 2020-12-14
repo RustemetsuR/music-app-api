@@ -13,7 +13,6 @@ const ArtistSchema = new Schema({
     },
     image: {
         type: String,
-        required: true,
     },
     published: {
         type: Boolean,
