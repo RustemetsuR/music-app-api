@@ -39,7 +39,7 @@ router.post("/", auth, async (req, res) => {
     } else {
         const trackHistory = new TrackHistory({
             track: trackID,
-            user: user._id,
+            user: req.user._id,
             dateTime: new Date().toISOString(),
         });
         try {
