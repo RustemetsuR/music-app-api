@@ -8,7 +8,7 @@ const users = require("./app/users");
 const trackHistory = require("./app/trackHistory");
 const unpublishedItems = require("./app/unpublishedItems");
 const app = express();
-const port = 8000;
+const port = process.env.NODE_ENV === "test" ? 8010 : 8000;
 const config = require("./config");
 
 app.use(cors());
